@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Killing Floor 2 Achievement Guide</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/template.css" />
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="js/purl.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <section id="introduction">
+      <h1><a href="#introduction">Introduction</a></h1>
+      <p>
+        Welcome! This guide aims to document every achievement available in the game Killing Floor 2 by Tripwire Interactive.
+      </p>
+      <p>
+        The guide includes details of each achievement as well as strategies to unlock them.
+      </p>
+      <p>
+        Map achievements are now included at the end of the page. They are sorted separately.
+      </p>
+      <section id="contact">
+        <h2><a href="#contact">Contact</a></h2>
+        <p>
+          This guide is a work in progress, so feel free to let me know any mistakes I've made.
+        </p>
+      </section>
+      <section id="symbols">
+        <h2><a href="#symbols">Symbols</a></h2>
+        <p>
+          <img src="images/perks/medic.png" alt="medic" />
+          <img src="images/perks/support.png" alt="suppport" />
+          <img src="images/perks/sharpshooter.png" alt="sharpshooter" />
+          <img src="images/perks/commando.png" alt="commando" />
+          <img src="images/perks/berserker.png" alt="berserker" />
+          <img src="images/perks/firebug.png" alt="firebug" />
+          <img src="images/perks/demolition.png" alt="demolition" />
+          <img src="images/perks/none.png" alt="none" />
+          indicate that the achievement involves a weapon belonging to that perk.
+        </p>
+        <p>
+          <span class="tag easy">10</span><span class="tag medium">5</span><span class="tag hard">1</span>
+          indicate the percentage of players on Steam who have unlocked this achievement, with the colour giving an indication of how common it is at a glance.
+          Note that achievements introduced more recently tend to be skewed lower, since there has been less time to unlock them.
+        </p>
+      </section>
+      <section>
+        <h2><a href="#options">Options</a></h2>
+        <p>Sort by <select id="sort" name="sort">
+          <option value="rate-desc" selected="selected">rate (descending)</option>
+          <option value="rate-asc">rate (ascending)</option>
+          <option value="name">name</option>
+        </select></p>
+        <p>Group by <select id="group" name="group">
+          <option value="none" selected="selected">none</option>
+          <option value="event">event</option>
+          <option value="perk">perk</option>
+        </select></p>
+        <p><label><input type="checkbox" id="tips" name="tips" /> Show tips</label></p>
+        <p>
+          <label for="filter">Filter by Steam user
+            <input type="text" id="filter" name="filter" title="" />
+          </label>
+          <button id="filterApply">Apply</button>
+          <button id="filterClear">Clear</button>
+          <span id="filterStatus"></span>
+        </p>
+        <p>Tired of putting in these settings every time? <a id="bookmark" href="#">Right click here and select bookmark</a>.
+      </section>
+    </section>
+    <div id="achievements">
+    </div>
+    <section id="maps">
+      <h1>Maps</h1>
+      <table>
+        <thead>
+          <tr>
+            <th><a href="javascript:sort_maps('name');">Name</a></th>
+            <th><a href="javascript:sort_maps('normal');">Normal</a></th>
+            <th><a href="javascript:sort_maps('hard');">Hard</a></th>
+            <th><a href="javascript:sort_maps('suicidal');">Suicidal</a></th>
+            <th><a href="javascript:sort_maps('hell');">Hell on Earth</a></th>
+            <th><a href="javascript:sort_maps('dosh');">Dosh Blings</a></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>

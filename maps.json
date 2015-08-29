@@ -1,0 +1,110 @@
+[
+  {
+    "id": "burning-paris",
+    "api": [
+      "achievement_0",
+      "achievement_1",
+      "achievement_2",
+      "achievement_3",
+      "achievement_16"
+    ],
+    "name": "Burning Paris",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "outpost",
+    "api": [
+      "achievement_4",
+      "achievement_5",
+      "achievement_6",
+      "achievement_7",
+      "achievement_17"
+    ],
+    "name": "Outpost",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "biotics-lab",
+    "api": [
+      "achievement_8",
+      "achievement_9",
+      "achievement_10",
+      "achievement_11",
+      "achievement_18"
+    ],
+    "name": "Biotics Lab",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "volter-manor",
+    "api": [
+      "achievement_12",
+      "achievement_13",
+      "achievement_14",
+      "achievement_15",
+      "achievement_19"
+    ],
+    "name": "Volter Manor",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "evacuation-point",
+    "api": [
+      "achievement_20",
+      "achievement_21",
+      "achievement_22",
+      "achievement_23",
+      "achievement_28"
+    ],
+    "name": "Evacuation Point",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "catacombs",
+    "api": [
+      "achievement_24",
+      "achievement_25",
+      "achievement_26",
+      "achievement_27",
+      "achievement_29"
+    ],
+    "name": "Catacombs",
+    "rate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]
