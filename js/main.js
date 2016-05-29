@@ -1,4 +1,4 @@
-window.mapSortMode = null;
+window.tableSortMode = {};
 window.countdown_id = null;
 window.attempts = 0;
 
@@ -8,9 +8,9 @@ $(document).ready(function ()
   {
     window.data = data;
 
-    $.getJSON('maps.json', function (data)
+    $.getJSON('tables.json', function (data)
     {
-      window.maps = data;
+      window.tables = data;
       filter();
       document.location.hash = document.location.hash;
     });
@@ -212,7 +212,7 @@ function update()
 
   tips();
 
-  update_maps();
+  update_tables();
 }
 
 function tips()
@@ -356,15 +356,71 @@ function processAchievements(list, base)
   }
 }
 
-function update_maps()
+function update_tables()
 {
-  var $base = $("#maps tbody");
+  var $base = $("#tables");
   $base.empty();
 
-  processMaps(window.maps, $base);
+  window.tables.forEach(function (table) {
+    var $section = $('<section id="' + table.id + '"><h1><a href="#' + table.id + '">' + table.name + '</a></h1></section>');
+
+    // construct new table
+    var headings = '';
+    table.columns.forEach(function (column, index) {
+      headings += '<th><a href="javascript:sort_table(\'' + table.id + '\', \'' + index + '\');">' + column + '</a></th>';
+    });
+    var $table = $('<table><thead><tr>' + headings + '</tr></thead></table>');
+    var $tbody = $('<tbody></tbody>');
+
+    // sort list as desired
+    var list = table.data;
+    var sort_column = tableSortMode[table.id];
+    if (sort_column == 0) {
+      list.sort(sort_table_name);
+    } else if (sort_column > 0) {
+      list.sort(function (a, b) {
+        return sort_table_rate(a, b, sort_column - 1);
+      });
+    }
+
+    // create rows
+    for (var i = 0; i < list.length; i++)
+    {
+      var $row = $('<tr id="' + list[i].id + '"><td class="first"><a href="#' + list[i].id + '">' + list[i].name + '</a></td></tr>');
+      for (var j = 0; j < table.columns.length - 1; j++)
+      {
+        if (window.user != null)
+        {
+          var found = false;
+          $.each(window.user.achievements, function (k, obj)
+          {
+            if (obj.name.toLowerCase() == list[i].api[j])
+              found = true;
+          });
+          if (found)
+          {
+            $row.append($('<td>&#x2714;</td>'));
+            continue;
+          }
+        }
+        $row.append($('<td><span class="tag ' + (list[i].rate[j] >= 4 ? 'easy' : (list[i].rate[j] >= 2 ? 'medium' : 'hard')) + '">' + list[i].rate[j] + '</span></td>'));
+      }
+      $tbody.append($row);
+    }
+
+    // put everything together
+    $table.append($tbody);
+    $section.append($table);
+    $base.append($section);
+  });
 }
 
-function sortMapName(a, b)
+function sort_table(table, column) {
+  tableSortMode[table] = column;
+  update_tables();
+}
+
+function sort_table_name(a, b)
 {
   if (a.name < b.name)
     return -1;
@@ -373,74 +429,11 @@ function sortMapName(a, b)
   return 0;
 }
 
-function sortMapRate(a, b, i)
+function sort_table_rate(a, b, i)
 {
   if (a.rate[i] < b.rate[i])
     return 1;
   else if (a.rate[i] > b.rate[i])
     return -1;
   return 0;
-}
-
-function sortMapNormal(a, b) { return sortMapRate(a, b, 0); }
-function sortMapHard(a, b) { return sortMapRate(a, b, 1); }
-function sortMapSuicidal(a, b) { return sortMapRate(a, b, 2); }
-function sortMapHell(a, b) { return sortMapRate(a, b, 3); }
-function sortMapDosh(a, b) { return sortMapRate(a, b, 4); }
-
-function processMaps(list, base)
-{
-  switch (window.mapSortMode)
-  {
-    case 'name':
-      list.sort(sortMapName);
-      break;
-    case 'normal':
-      list.sort(sortMapNormal);
-      break;
-    case 'hard':
-      list.sort(sortMapHard);
-      break;
-    case 'suicidal':
-      list.sort(sortMapSuicidal);
-      break;
-    case 'hell':
-      list.sort(sortMapHell);
-      break;
-    case 'dosh':
-      list.sort(sortMapDosh);
-      break;
-  }
-
-  for (var i = 0; i < list.length; i++)
-  {
-    var $map = $('<tr id="' + list[i].id + '"><td class="map"><a href="#' + list[i].id + '">' + list[i].name + '</a></td></tr>');
-    for (var j = 0; j < 5; j++)
-    {
-      if (window.user != null)
-      {
-        var found = false;
-        $.each(window.user.achievements, function (k, obj)
-        {
-          if (obj.name.toLowerCase() == list[i].api[j])
-            found = true;
-        });
-        if (found)
-        {
-          $map.append($('<td>&#x2714;</td>'));
-          continue;
-        }
-      }
-      $map.append($('<td><span class="tag ' + (list[i].rate[j] >= 4 ? 'easy' : (list[i].rate[j] >= 2 ? 'medium' : 'hard')) + '">' + list[i].rate[j] + '</span></td>'));
-    }
-    if (list[i].nohoe != undefined)
-      $map.append($('<td>&mdash;</td>'));
-    base.append($map);
-  }
-}
-
-function sort_maps(by)
-{
-  window.mapSortMode = by;
-  update_maps();
 }

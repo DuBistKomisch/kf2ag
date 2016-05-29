@@ -4,7 +4,7 @@ var xml2json = require('xml2json');
 var slug = require('slug');
 
 var DATA_FILE = '../data.json';
-var MAPS_FILE = '../maps.json';
+var TABLES_FILE = '../tables.json';
 
 var global = null;
 var meta = null;
@@ -47,7 +47,7 @@ function go()
 
   // get existing json
   var data = JSON.parse(fs.readFileSync(DATA_FILE, {encoding: 'utf8'}));
-  var maps = JSON.parse(fs.readFileSync(MAPS_FILE, {encoding: 'utf8'}));
+  var tables = JSON.parse(fs.readFileSync(TABLES_FILE, {encoding: 'utf8'}));
 
   // init counters
   var added = 0;
@@ -62,7 +62,7 @@ function go()
     for (var j = 0; j < data.length; ++j)
       if (findAchievement(data[j].data, mainMeta[i].apiname) != null)
         continue meta;
-    if (existsMap(maps, mainMeta[i].apiname))
+    if (existsTable(tables, mainMeta[i].apiname))
       continue meta;
     if (newSection == null)
       data.push(newSection = {'id': 'test', 'name': 'Test', 'data': []});
@@ -112,7 +112,7 @@ function go()
         node.rate = rate;
       }
     }
-    else if (!existsMap(maps, main[i].name))
+    else if (!existsTable(tables, main[i].name))
     {
       unmatched.push(main[i].name);
     }
@@ -128,38 +128,41 @@ function go()
   matched = 0;
   updated = 0;
 
-  // start MAPS
+  // start TABLES
   for (var i = 0; i < main.length; ++i)
   {
     // match to existing json node
-    for (var j = 0; j < maps.length; ++j)
+    for (var j = 0; j < tables.length; ++j)
     {
-      for (var k = 0; k < 5; ++k)
+      for (var k = 0; k < tables[j].data.length; ++k)
       {
-        if (main[i].name.toLowerCase() == maps[j].api[k])
+        for (var l = 0; l < 5; ++l)
         {
-          // update
-          ++matched;
-          rate = String(main[i].percent);
-          rate = Number(rate.substring(0, rate.indexOf('.') + 3));
-          if (maps[j].rate[k] != rate)
+          if (main[i].name.toLowerCase() == tables[j].data[k].api[l])
           {
-            ++updated;
-            maps[j].rate[k] = rate;
+            // update
+            ++matched;
+            rate = String(main[i].percent);
+            rate = Number(rate.substring(0, rate.indexOf('.') + 3));
+            if (tables[j].data[k].rate[l] != rate)
+            {
+              ++updated;
+              tables[j].data[k].rate[l] = rate;
+            }
           }
         }
       }
     }
   }
 
-  // done MAPS
-  console.log('-- ' + MAPS_FILE);
+  // done TABLES
+  console.log('-- ' + TABLES_FILE);
   console.log('matched: ' + matched);
   console.log('updated: ' + updated);
 
   // write json
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
-  fs.writeFileSync(MAPS_FILE, JSON.stringify(maps, null, 2));
+  fs.writeFileSync(TABLES_FILE, JSON.stringify(tables, null, 2));
 }
 
 function findAchievement(list, name)
@@ -171,12 +174,13 @@ function findAchievement(list, name)
   return undefined;
 }
 
-function existsMap(list, name)
+function existsTable(list, name)
 {
   name = name.toLowerCase();
   for (var i = 0; i < list.length; ++i)
-    for (var j = 0; j < 5; ++j)
-      if (list[i].api[j] == name)
-        return true;
+    for (var j = 0; j < list[i].data.length; ++j)
+      for (var k = 0; k < 5; ++k)
+        if (list[i].data[j].api[k] == name)
+          return true;
   return false;
 }

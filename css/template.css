@@ -307,7 +307,7 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
  * maps area
  */
 
-#maps table
+#tables table
 {
   margin: 10px 0px;
   border-collapse: separate;
@@ -318,14 +318,14 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
   border-radius: 5px;
 }
 
-#maps th
+#tables th
 {
   width: 15%;
   
   font-weight: bold;
 }
 
-#maps td
+#tables td
 {
   width: 15%;
   padding: 5px;
@@ -333,7 +333,7 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
   text-align: center;
 }
 
-#maps td.map
+#tables td.first
 {
   text-align: left;
 }
