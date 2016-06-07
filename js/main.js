@@ -92,7 +92,7 @@ function filter()
   else
   {
     // number, assume SteamID64
-    get_filter('http://jakebarnes.com.au/ISteamUserStats/GetUserStatsForGame/v0002/?appid=1250&key=80425AE7E1845E2B033ECA38E8F7BCBE&steamid=' + $('#filter').val(), 'Fetching user stats...', function (data)
+    get_filter('http://jakebarnes.com.au/ISteamUserStats/GetUserStatsForGame/v0002/?appid=232090&key=80425AE7E1845E2B033ECA38E8F7BCBE&steamid=' + $('#filter').val(), 'Fetching user stats...', function (data)
     {
       if (data.playerstats != undefined)
       {
