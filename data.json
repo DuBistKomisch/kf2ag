@@ -4,14 +4,6 @@
     "name": "General",
     "data": [
       {
-        "id": "perked-up",
-        "api": "achievement_93",
-        "icon": "36350fb27669319b6c3ec26304250c9ff76b8a13",
-        "name": "Perked Up",
-        "description": "Reach Level 25 in all Perks",
-        "rate": 0.78
-      },
-      {
         "id": "schools-out-forever",
         "api": "achievement_109",
         "icon": "66f5309ba8030f4f5dc5f1c15e1db4dad14ffbb1",
@@ -58,70 +50,6 @@
         "name": "Die Volter",
         "description": "Kill Dr. Hans Volter For the First Time",
         "rate": 19.52
-      },
-      {
-        "id": "win-hard",
-        "api": "achievement_134",
-        "icon": "be68c7423f778e6a2fc636b4dc2e20942c6f0c68",
-        "name": "Win Hard",
-        "description": "Win Any Match on Hard Difficulty",
-        "rate": 18.94
-      },
-      {
-        "id": "win-suicidal",
-        "api": "achievement_135",
-        "icon": "3f199fbc299b56e873bb1bfb2d1726d88db3bbe6",
-        "name": "Win Suicidal",
-        "description": "Win Any Match on Suicidal Difficulty",
-        "rate": 7.65
-      },
-      {
-        "id": "win-hell-on-earth",
-        "api": "achievement_136",
-        "icon": "35c0be17200bacee8c54fbe87f16e8f27a82a181",
-        "name": "Win Hell on Earth",
-        "description": "Win Any Match on Hell on Earth Difficulty",
-        "rate": 6.25
-      },
-      {
-        "id": "mr-perky-5",
-        "api": "achievement_137",
-        "icon": "75ff6bda27bc5f21d0f5aa096305e66b87129871",
-        "name": "Mr. Perky 5",
-        "description": "Reach Level 5 on Any Perk",
-        "rate": 29.63
-      },
-      {
-        "id": "mr-perky-10",
-        "api": "achievement_138",
-        "icon": "2b63768e9a813a14111cc4eeb283a0833db88874",
-        "name": "Mr. Perky 10",
-        "description": "Reach Level 10 on Any Perk",
-        "rate": 21.74
-      },
-      {
-        "id": "mr-perky-15",
-        "api": "achievement_139",
-        "icon": "26c3035ca19855e765ad032d1de71fe64ae153e9",
-        "name": "Mr. Perky 15",
-        "description": "Reach Level 15 on Any Perk",
-        "rate": 14.5
-      },
-      {
-        "id": "mr-perky-20",
-        "api": "achievement_140",
-        "icon": "99a2fb3824c9f1eb2c607e22da9b4109cee0124f",
-        "name": "Mr. Perky 20",
-        "description": "Reach Level 20 on Any Perk",
-        "rate": 8.79
-      },
-      {
-        "id": "mr-perky-25",
-        "api": "achievement_141",
-        "icon": "9aa58d0c8f2f80e8250bb75aa4de09ffba6da5b5",
-        "name": "Mr. Perky 25",
-        "description": "Reach Level 25 on Any Perk",
-        "rate": 4.75
       },
       {
         "id": "win-1",

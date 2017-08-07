@@ -389,6 +389,10 @@ function update_tables()
       var $row = $('<tr id="' + list[i].id + '"><td class="first"><a href="#' + list[i].id + '">' + list[i].name + '</a></td></tr>');
       for (var j = 0; j < table.columns.length - 1; j++)
       {
+        if (!list[i].api[j]) {
+          $row.append($('<td>&nbsp;</td>'));
+          continue;
+        }
         if (window.user != null)
         {
           var found = false;
