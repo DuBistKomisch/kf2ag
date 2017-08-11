@@ -313,6 +313,10 @@ function processAchievements(list, base)
     // event
     if (list[i].event != undefined)
       $achievement.find('div:nth-of-type(1) p:nth-of-type(2)').prepend('<span class="tag event">&nbsp;</span>');
+    // link
+    if (list[i].link) {
+      $achievement.find('div:nth-of-type(1) p:nth-of-type(2)').prepend('<span class="tag link"><a href="' + list[i].link + '">&#x1f517;</a></span>');
+    }
     // tips
     if (list[i].tips != undefined)
     {
@@ -384,30 +388,30 @@ function update_tables()
     }
 
     // create rows
-    for (var i = 0; i < list.length; i++)
-    {
+    for (var i = 0; i < list.length; i++) {
       var $row = $('<tr id="' + list[i].id + '"><td class="first"><a href="#' + list[i].id + '">' + list[i].name + '</a></td></tr>');
-      for (var j = 0; j < table.columns.length - 1; j++)
-      {
-        if (!list[i].api[j]) {
-          $row.append($('<td>&nbsp;</td>'));
-          continue;
-        }
-        if (window.user != null)
-        {
-          var found = false;
-          $.each(window.user.achievements, function (k, obj)
-          {
-            if (obj.name.toLowerCase() == list[i].api[j])
-              found = true;
-          });
-          if (found)
-          {
-            $row.append($('<td>&#x2714;</td>'));
-            continue;
+      for (var j = 0; j < table.columns.length - 1; j++) {
+        $td = $('<td></td>');
+        if (list[i].api[j]) {
+          if (window.user != null) {
+            var found = false;
+            $.each(window.user.achievements, function (k, obj) {
+              if (obj.name.toLowerCase() == list[i].api[j])
+                found = true;
+            });
           }
+          if (found) {
+            $td.append('&#x2714;');
+          } else {
+            if (list[i].link[j]) {
+              $td.append('<span class="tag link"><a href="' + list[i].link[j] + '">&#x1f517;</a></span>');
+            }
+            $td.append($('<span class="tag ' + (list[i].rate[j] >= 4 ? 'easy' : (list[i].rate[j] >= 2 ? 'medium' : 'hard')) + '">' + list[i].rate[j] + '</span>'));
+          }
+        } else {
+          $td.append('&nbsp;');
         }
-        $row.append($('<td><span class="tag ' + (list[i].rate[j] >= 4 ? 'easy' : (list[i].rate[j] >= 2 ? 'medium' : 'hard')) + '">' + list[i].rate[j] + '</span></td>'));
+        $row.append($td);
       }
       $tbody.append($row);
     }

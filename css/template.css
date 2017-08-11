@@ -25,7 +25,7 @@ article
 {
   margin-right: 10px;
   margin-top: 10px;
-  
+
   background: #333;
   border-radius: 5px;
 }
@@ -156,7 +156,7 @@ article div:nth-of-type(1)
   position: relative;
   height: 64px;
   padding: 5px;
-  
+
   background-repeat: no-repeat;
   background-position: 79px 5px;
   background-color: #888;
@@ -180,7 +180,7 @@ article div:nth-of-type(1) h3
   position: absolute;
   top: 15px;
   left: 79px;
-  
+
   font-weight: bold;
   font-size: 110%;
 }
@@ -199,7 +199,7 @@ article div:nth-of-type(1) p:nth-of-type(1)
   position: absolute;
   top: 48px;
   left: 79px;
-  
+
   font-style: italic;
   font-size: 75%;
 }
@@ -208,7 +208,7 @@ article div:nth-of-type(1) p:nth-of-type(1)
  * tags
  */
 
-article div:nth-of-type(1) p:nth-of-type(2) 
+article div:nth-of-type(1) p:nth-of-type(2)
 {
   position: absolute;
   right: 5px;
@@ -220,7 +220,7 @@ article div:nth-of-type(1) p:nth-of-type(2)
   display: inline-block;
   margin-left: 5px;
   padding: 2px;
-  
+
   font-family: monospace;
   font-size: 80%;
   font-weight: bold;
@@ -241,11 +241,13 @@ article div:nth-of-type(1) p:nth-of-type(2)
 
 .tag:after { content: "%"; }
 .event:after { content: none; }
- 
+.link:after { content: none; }
+
 .easy { border-color: #4d4; background-color: #4d4; }
 .medium { border-color: #fd0; background-color: #fd0; }
 .hard { border-color: #f40; background-color: #f40; }
 .event { border-color: #88f; background-color: #88f; }
+.link { border-color: #ddd; background-color: #ddd; }
 
 /**
  * progress
@@ -256,7 +258,7 @@ article div:nth-of-type(1) p:nth-of-type(3)
   position: absolute;
   right: 5px;
   top: 48px;
-  
+
   width: 102px;
   height: 20px;
   background: #333;
@@ -267,7 +269,7 @@ article div:nth-of-type(1) p:nth-of-type(3)
 article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(1)
 {
   display: inline-block;
-  
+
   height: 18px;
   background: #383;
   border-radius: 5px;
@@ -312,7 +314,7 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
   margin: 10px 0px;
   border-collapse: separate;
   border-spacing: 5px;
-  
+
   background-color: #888;
   border: #bbb 1px solid;
   border-radius: 5px;
@@ -321,7 +323,7 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
 #tables th
 {
   width: 15%;
-  
+
   font-weight: bold;
 }
 
@@ -329,7 +331,7 @@ article div:nth-of-type(1) p:nth-of-type(3) span:nth-of-type(3)
 {
   width: 15%;
   padding: 5px;
-  
+
   text-align: center;
 }
 
